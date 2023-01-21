@@ -28,16 +28,16 @@ class EmojiGame extends Component {
 
   onEmojiClicks = id => {
     const {scoreList} = this.state
-    if (id in scoreList) {
+    if (scoreList.includes(id)) {
       this.setState({isGameProcess: false})
     }
-    this.setState(prevState => ({scoreList: (prevState.scoreList, id)}))
+    this.setState(prevState => ({scoreList: [...prevState.scoreList, id]}))
   }
 
   render() {
     const {isGameProcess, scoreList, topScore} = this.state
     console.log(scoreList)
-    const score = scoreList.length
+    const score = scoreList.length - 1
     const shuffledListOfEmojis = this.shuffledEmojisList()
 
     console.log(shuffledListOfEmojis)

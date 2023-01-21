@@ -2,36 +2,50 @@
 import './index.css'
 
 const WinOrLoseCard = props => {
-  const {score} = props
+  const {score, playTheGameAgain} = props
+
+  const playAgain = () => {
+    playTheGameAgain()
+  }
 
   return (
-    <div className="win-or-loss-container">
+    <div className="win-container">
       {score === 12 ? (
-        <div>
-          <div className="f1">
+        <div className="rows">
+          <div className="center">
             <h1 className="lose">You Lose</h1>
-            <h1 className="score">Score</h1>
-            <p className="final-score">{score}/12</p>
+            <p className="score">Score</p>
+            <p id="score" className="final-score">
+              {score}/12
+            </p>
             <button type="button" className="play-again">
               Play Again
             </button>
           </div>
           <div className="img">
-            <img src="" alt="lose" className="lose-img" />
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/won-game-img.png"
+              alt="win"
+              className="lose-img"
+            />
           </div>
         </div>
       ) : (
-        <div>
-          <div>
+        <div className="rows">
+          <div className="center">
             <h1 className="lose">You Lose</h1>
             <h1 className="score">Score</h1>
             <p className="final-score">{score}/12</p>
-            <button type="button" className="play-again">
+            <button type="button" className="play-again" onClick={playAgain}>
               Play Again
             </button>
           </div>
           <div className="img">
-            <img src="" alt="lose" className="lose-img" />
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/lose-game-img.png"
+              alt="lose"
+              className="lose-img"
+            />
           </div>
         </div>
       )}
