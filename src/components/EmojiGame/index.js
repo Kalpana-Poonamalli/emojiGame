@@ -34,10 +34,20 @@ class EmojiGame extends Component {
     this.setState(prevState => ({scoreList: [...prevState.scoreList, id]}))
   }
 
+  playTheGameAgain = score => {
+    const {topScore} = this.state
+    let newTopScore = topScore
+
+    if (score > newTopScore) {
+      newTopScore = score
+    }
+    this.setState({isGameProcess: true, scoreList: [], topScore: newTopScore})
+  }
+
   render() {
     const {isGameProcess, scoreList, topScore} = this.state
     console.log(scoreList)
-    const score = scoreList.length - 1
+    const score = scoreList.length
     const shuffledListOfEmojis = this.shuffledEmojisList()
 
     console.log(shuffledListOfEmojis)
@@ -57,7 +67,10 @@ class EmojiGame extends Component {
             ))}
           </div>
         ) : (
-          <WinOrLoseCard score={score} />
+          <WinOrLoseCard
+            score={score}
+            playTheGameAgain={this.playTheGameAgain}
+          />
         )}
       </div>
     )
