@@ -6,7 +6,7 @@ const NavBar = props => {
 
   return (
     <div>
-      {score !== 13 ? (
+      {score !== 12 ? (
         <div className="navbar-container">
           <div className="navbar-items">
             <img
